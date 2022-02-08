@@ -6,7 +6,7 @@ $(INSTALL_DIR):
 	mkdir -p "$(INSTALL_DIR)"
 
 $(INSTALL_DIR)/%.sh: $(LIB_DIR)/%.sh
-	ln -v -s "$<" "$@"
+	@cp -v "$<" "$@"
 
 install: $(LIB_FILES)
 .PHONY: install
