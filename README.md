@@ -12,12 +12,12 @@ and remember:
 
 the simplest approach to install this script is to clone this repo somewhere
 under `${HOME}/.local` and then source the **framework.sh** script in your
-`.bashrc` and/or `.bash_profile`. consider doing it in both if you're unsure
-when each one is loaded in your setup.  i.e,
+`.bashrc` and/or `.bash_profile`. consider sourcing it in both if you're unsure
+when each one is loaded in your workflow.  i.e,
 
 ```bash
 mkdir -p "${HOME}/.local/lib"
-git -C "${HOME}/.local/" clone "[URL TO THIS REPOSITORY]"
+git -C "${HOME}/.local/" clone https://github.com/jdbeightol/framework.git
 ```
 
 **example `.bashrc` or `.bash_profile` snippet**
