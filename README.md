@@ -22,7 +22,7 @@ git -C "${HOME}/.local/" clone https://github.com/jdbeightol/framework.git
 
 **example `.bashrc` or `.bash_profile` snippet**
 ```bash
-source "${HOME}/.local/framework/framework.sh`
+source "${HOME}/.local/framework/framework.sh"
 ```
 
 after making the above change, you will need to source your `.bashrc` or close
