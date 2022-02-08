@@ -86,9 +86,9 @@ some gotchas to note with a setup like this:
 
 ### why the basckslashes?
 
-normally using a backslack indicates escaping of characters, but in this case
-it is used to escape shell commands to avoid user aliases interacting with how
-this script is supposed to function.
+normally, using a backslack indicates escaping of a single character in bash,
+but in this case the backslash is used to "escape" shell commands to avoid a
+user's defined aliases interacting with how this script is supposed to function.
 
 ### can I use this with another bash-compatible shell?
 
