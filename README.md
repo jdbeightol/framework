@@ -32,10 +32,9 @@ is sane when you start using it.
 
 ## getting started
 
-to get a feel for how **framework.sh** works, let's run though the provided example
-scripts.
+to get a feel for how **framework.sh** works, let's run though the provided
+example script.  from the root of this repository, run the following,
 
-from the root of thisrepository, run the following,
 ```bash
 bash # let's drop into a subshell, so that we can return to the previous state easily
 source framework.sh # source the framework library
@@ -47,10 +46,10 @@ exit # leave the subshell; no state from the above commands should remain
 
 ## conventions
 
-some requirements for using **framework.sh**:
-- all functions sourced from a library must prefix their library's name without
-  the trailing with a `::` to separate the function name.  e.g., for a library
-  named  `example`, all function declared would start with `example::`.
+some conventions for using **framework.sh**:
+- all functions sourced from a library must prefix their library's name with a
+  `::` to namespace the function names.  e.g., for a library named  `example`,
+  all functions declared should start with `example::`.
 - library names must not include the trailing `.sh`.  calling `require example`
   will attempt to load `example.sh` and expect its functions to be prefixed with
   `example::`.  calling `require example.sh` will attempt to load
@@ -62,6 +61,8 @@ some requirements for using **framework.sh**:
   comma-separated PATH-like variables will be allowed for now
 - library files should not cause side-effects when sourced.  a library should
   only define and export functions and variables unless absolutely necessary.
+
+failure to follow the conventions may result in later headaches
 
 ## troubleshooting
 
