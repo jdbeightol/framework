@@ -48,7 +48,7 @@ example script.  from the root of this repository, run the following,
 bash # let's drop into a subshell, so that we can return to the previous state easily
 source framework.sh # source the framework library
 cd example # move into the example directory
-export FRAMEWORK_REQUIRE_LIB="${PWD}/lib" # override the library directory for this example
+export FRAMEWORK_LIB="${PWD}/lib" # override the library directory for this example
 ./example.sh # run the example script
 
 declare -F | awk '/hello::/' # since `./example.sh` ran in a subshell, nothing should remain from its require statement
@@ -59,6 +59,9 @@ hello::world # have fun!
 
 exit # when you're finished, leave the subshell; no state from the above commands should linger
 ```
+
+also included in the install directory is a sample Makefile for installing
+library files into the a users `FRAMEWORK_LIB` directory.
 
 ## conventions
 
@@ -74,7 +77,7 @@ some conventions for using **framework.sh**:
 - exported library variables should start with the capitalized library name
   followed by an underscore.  e.g., for a library named `example`, all exported
   variables should start with `EXAMPLE_`.
-- users must set `FRAMEWORK_REQUIRE_LIB` with a single, valid directory. no
+- users must set `FRAMEWORK_LIB` with a single, valid directory. no
   comma-separated PATH-like variables will be allowed for now
 - library files should not cause side-effects when sourced.  a library should
   only define and export functions and variables unless absolutely necessary.

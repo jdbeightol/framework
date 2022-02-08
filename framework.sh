@@ -7,11 +7,11 @@
 # params:
 #   $1 - library to load
 # env vars:
-#   FRAMEWORK_REQUIRE_LIB for sourcing library files
+#   FRAMEWORK_LIB for sourcing library files
 # return:
 #   0 - success
 #   1 - library file does not exist
-#   2 - FRAMEWORK_REQUIRE_LIB unset and library not loaded
+#   2 - FRAMEWORK_LIB unset and library not loaded
 #   3 - missing library name
 #   4 - library directory does not exist or is not a directory
 function require() {
@@ -27,20 +27,20 @@ function require() {
         # already defined, no need to load again
         return 0
     fi
-    if [ -z "${FRAMEWORK_REQUIRE_LIB}" ]; then
-        framework::echoErr "FRAMEWORK_REQUIRE_LIB unset"
+    if [ -z "${FRAMEWORK_LIB}" ]; then
+        framework::echoErr "FRAMEWORK_LIB unset"
         return 2
     fi
-    if [ ! -d "${FRAMEWORK_REQUIRE_LIB}" ]; then
-        framework::echoErr "FRAMEWORK_REQUIRE_LIB unset not a directory"
+    if [ ! -d "${FRAMEWORK_LIB}" ]; then
+        framework::echoErr "FRAMEWORK_LIB unset not a directory"
         return 4
     fi
 
     local script_name
-    script_name="${FRAMEWORK_REQUIRE_LIB}/${library_name}.sh"
+    script_name="${FRAMEWORK_LIB}/${library_name}.sh"
     # shellcheck source=/dev/null
     \source "${script_name}" 1>/dev/null 2>&1 || (
-        framework::echoErr "unable to source ${script_name} in ${FRAMEWORK_REQUIRE_LIB}"
+        framework::echoErr "unable to source ${script_name} in ${FRAMEWORK_LIB}"
         return 1
     )
 
@@ -59,7 +59,7 @@ function framework::echoErr() {
 }
 
 # The default framework lib path
-export FRAMEWORK_REQUIRE_LIB="${HOME}/.local/lib"
+export FRAMEWORK_LIB="${HOME}/.local/lib"
 
 export -f require
 export -f framework::echoErr
