@@ -49,7 +49,8 @@ exit # leave the subshell; no state from the above commands should remain
 some conventions for using **framework.sh**:
 - all functions sourced from a library must prefix their library's name with a
   `::` to namespace the function names.  e.g., for a library named  `example`,
-  all functions declared should start with `example::`.
+  all functions declared should start with `example::`.  an exception to this
+  rule could be made for user-callable functions like `require`.
 - library names must not include the trailing `.sh`.  calling `require example`
   will attempt to load `example.sh` and expect its functions to be prefixed with
   `example::`.  calling `require example.sh` will attempt to load
@@ -64,13 +65,22 @@ some conventions for using **framework.sh**:
 
 failure to follow the conventions may result in later headaches
 
-## troubleshooting
+## troubleshooting and gotchas
 
-right off the bat: consider using a language other than bash.
+right off the bat, if something is giving you difficulty with this system,
+consider using a language other than bash.  bash is great for glue, but complex
+processes or business logic should probably be represented in a language where
+libraries and dependencies can be expressed as a first-class concept.
 
-bash is great for glue, but complex processes or business logic should
-probably be represented in a language where libraries and dependencies can be
-expressed as a first-class
+some gotchas to note with a setup like this:
+- bash environment is forever!  once something is exported, it will stay
+  exported in that form until overwritten, and calling `require` does not
+  reload previously loaded libraries.
+- libraries imported with `require` that, by chance, match an unrelated bash
+  function already defined in your environment will not be loaded.  if calling
+  `require` does not behave as expected, I suggest checking what functions exist
+  in your environment with `declare -F` and searching for any that share a name
+  with the library you are attempting to load.
 
 ## faq
 
@@ -83,8 +93,8 @@ this script is supposed to function.
 ### can I use this with another bash-compatible shell?
 
 maybe.  it wasn't designed for that, and I definitely didn't test that, but you
-can .  i would try it and see what breaks.  it can't get much more forked than
-things already are, right?
+can.  i suggest trying it and seeing what breaks.  it can't get much more forked
+than things already are, right?
 
 ### why aren't you capitalizing sentences?
 
