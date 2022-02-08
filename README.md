@@ -60,8 +60,10 @@ hello::world # have fun!
 exit # when you're finished, leave the subshell; no state from the above commands should linger
 ```
 
-also included in the install directory is a sample Makefile for installing
-library files into the a users `FRAMEWORK_LIB` directory.
+also included in the example directory is a sample Makefile to `install` and
+`uninstall` library files into the a users `FRAMEWORK_LIB` directory.  the
+makefile also has a `test-env` target to demonstrate a possible development
+environment setup.
 
 ## conventions
 
