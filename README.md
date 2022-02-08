@@ -1,5 +1,14 @@
 # framework.sh
 
+```
+  __                                             _          _     
+ / _|_ __ __ _ _ __ ___   _____      _____  _ __| | __  ___| |__  
+| |_| '__/ _` | '_ ` _ \ / _ \ \ /\ / / _ \| '__| |/ / / __| '_ \ 
+|  _| | | (_| | | | | | |  __/\ V  V / (_) | |  |   < _\__ \ | | |
+|_| |_|  \__,_|_| |_| |_|\___| \_/\_/ \___/|_|  |_|\_(_)___/_| |_|
+                                                                  
+```
+
 **framework.sh** adds a lightweight function for bash script re-use called
 `require`.  shell libraries have significant gotchas and frustrations for
 complex tasks.  if in doubt about complexity, consider another language instead,
