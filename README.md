@@ -50,7 +50,14 @@ source framework.sh # source the framework library
 cd example # move into the example directory
 export FRAMEWORK_REQUIRE_LIB="${PWD}/lib" # override the library directory for this example
 ./example.sh # run the example script
-exit # leave the subshell; no state from the above commands should remain
+
+declare -F | awk '/hello::/' # since `./example.sh` ran in a subshell, nothing should remain from its require statement
+require hello # you can play with imported functions directly if you run `require` here
+declare -F | awk '/hello::/' # see?
+
+hello::world # have fun!
+
+exit # when you're finished, leave the subshell; no state from the above commands should linger
 ```
 
 ## conventions
