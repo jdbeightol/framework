@@ -25,6 +25,3 @@ export HELLO_WORD="hello"
 #export HELLO_WORD="hallo"
 #export HELLO_WORD="привет"
 #export HELLO_WORD="こんにちは"
-
-# functions should be exported to ensure subshells inherit them as expected.
-export -f hello::world

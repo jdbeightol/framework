@@ -76,13 +76,13 @@ some conventions for using **framework.sh**:
   will attempt to load `example.sh` and expect its functions to be prefixed with
   `example::`.  calling `require example.sh` will attempt to load
   `example.sh.sh` and expect its functions to be prefixed with `example.sh::`.
-- exported library variables should start with the capitalized library name
-  followed by an underscore.  e.g., for a library named `example`, all exported
+- all exported library variables should start with the capitalized library name
+  followed by an underscore.  e.g., for a library named `example`, its exported
   variables should start with `EXAMPLE_`.
 - users must set `FRAMEWORK_LIB` with a single, valid directory. no
   comma-separated PATH-like variables will be allowed for now
 - library files should not cause side-effects when sourced.  a library should
-  only define and export functions and variables unless absolutely necessary.
+  only define functions and variables unless absolutely necessary.
 
 failure to follow the conventions may result in later headaches
 
