@@ -60,3 +60,5 @@ function framework::echoErr() {
 
 # The default framework lib path
 export FRAMEWORK_LIB="${HOME}/.local/lib"
+
+export -f require
