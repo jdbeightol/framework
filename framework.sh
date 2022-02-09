@@ -39,13 +39,14 @@ function require() {
     local script_name
     script_name="${FRAMEWORK_LIB}/${library_name}.sh"
     # shellcheck source=/dev/null
-    \source "${script_name}" 1>/dev/null 2>&1 || (
-        1>&2 \echo "unable to source ${script_name} in ${FRAMEWORK_LIB}"
-        return 1
-    )
+    
+    if \source "${script_name}" 1>/dev/null 2>&1; then
+        # success
+        return 0
+    fi
 
-    # success
-    return 0
+    1>&2 \echo "unable to source ${script_name} in ${FRAMEWORK_LIB}"
+    return 1
 }
 
 # The default framework lib path
