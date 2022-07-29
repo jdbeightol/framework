@@ -50,6 +50,8 @@ function require() {
 }
 
 # The default framework lib path
-export FRAMEWORK_LIB="${HOME}/.local/lib"
+if [ -z "${FRAMEWORK_LIB}" ]; then
+    export FRAMEWORK_LIB="${HOME}/.local/lib"
+fi
 
 export -f require
